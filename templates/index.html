@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Представим, что тут много всего крутого на главной странице</h1>
+    <h2>Это сайт, на котором Станислав будет учиться базовым вещам в django!</h2>
+    {% if note %}
+        {% for n in note %}
+        <div>
+            <h3>{{ n.title }}</h3>
+            <p>{{ n.content }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Заметок пока нет!</p>
+    {% endif %}
+</div>
+{% endblock %}

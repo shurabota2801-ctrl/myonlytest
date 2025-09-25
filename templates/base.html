@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta = charset="UTF-8">
+    <title>{% block title %}myonlytest{% endblock %}</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/">Мои заметки</a>
+            <a href="/">Создать заметку</a>
+        </nav>
+    </div>
+    <main>
+        {% block content %}
+        {% endblock %} 
+    </main>
+</body>
+</html>
