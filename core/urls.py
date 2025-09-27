@@ -19,6 +19,7 @@ from django.urls import path, include
 from notes import views
 
 urlpatterns = [
+    path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
 ]
