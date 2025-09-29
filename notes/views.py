@@ -25,9 +25,6 @@ def create_note(request):
 @login_required
 def update_note(request, note_id):
     note = get_object_or_404(Note, id=note_id)
-    if note.author != request.user:
-        return redirect('index')
-    
     if request.method == 'POST':
         form = NoteForm(request.POST, instance=note)
         if form.is_valid():
@@ -39,3 +36,12 @@ def update_note(request, note_id):
         form = NoteForm(instance=note)
     context = {'form':form, 'title':'Редактирование заметки'}
     return render(request, 'notes/update_note.html', context)
+
+@login_required
+def delete_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id, author=request.user)
+    if request.method == 'POST':
+        note.delete()
+        return redirect('index')
+    context = {'note':note, 'title':'Удаление заметки'}
+    return render(request, 'notes/delete_note.html', context)

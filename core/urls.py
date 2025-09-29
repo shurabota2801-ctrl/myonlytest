@@ -20,7 +20,7 @@ from notes import views
 
 urlpatterns = [
     path('users/', include('users.urls')),
-    path('notes', include('notes.urls')),
+    path('notes/', include('notes.urls')),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
 ]

@@ -14,6 +14,7 @@
             <h3>{{ n.title }}</h3>
             <p>{{ n.content }}</p>
             <a href="{% url 'notes:update_note' n.id %}">Изменить</a>
+            <a href="{% url 'notes:delete_note' n.id %}">Удалить</a>
         </div>
         {% endfor %}
     {% else %}
