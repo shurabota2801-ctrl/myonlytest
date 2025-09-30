@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div>
+    <a href="{% url 'notes:create_note' %}">Создать заметку</a>
+    <h1>А это, когда пользователь зареган!</h1>
+    <h1>Заметки</h1>
+    {% if notes %}
+        {% for n in notes %}
+        <div>
+            <h3>{{ n.title }}</h3>
+            <p>{{ n.content }}</p>
+            <a href="{% url 'notes:update_note' n.id %}">Изменить</a>
+            <a href="{% url 'notes:delete_note' n.id %}">Удалить</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Заметок пока нет!</p>
+    {% endif %}
+</div>
+{% else %}
+<h1>Если пользователь не зареган!</h1>
+{% endif %}
+{% endblock %}

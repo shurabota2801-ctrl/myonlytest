@@ -1,12 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .models import Note
 from .forms import NoteForm
 
 def index(request):
+    return render(request, 'index.html', {'title':'Мои тесты'})
+
+def search_note(request):
+    pass
+
+@login_required
+def notes_list(request):
     notes = Note.objects.all().order_by('-created_at')
     context = {'title':'Мои заметки','notes':notes}
-    return render(request, 'index.html', context)
+    return render(request, 'notes/notes_list.html', context)
 
 @login_required
 def create_note(request):
