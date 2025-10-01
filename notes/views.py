@@ -3,17 +3,22 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Note
 from .forms import NoteForm
+from django.urls import reverse
 
 def index(request):
     return render(request, 'index.html', {'title':'Мои тесты'})
 
-def search_note(request):
-    pass
-
 @login_required
 def notes_list(request):
-    notes = Note.objects.all().order_by('-created_at')
-    context = {'title':'Мои заметки','notes':notes}
+    notes = Note.objects.filter(author=request.user).order_by('-created_at')
+    search_query = request.GET.get('q', '')
+    if search_query:
+        notes = notes.filter(author=request.user).filter(Q(title__icontains=search_query) | Q(content__icontains=search_query)).order_by('-created_at')
+    context = {
+        'title':'Мои заметки',
+        'notes':notes,
+        'search_query':search_query
+    }
     return render(request, 'notes/notes_list.html', context)
 
 @login_required
@@ -24,7 +29,7 @@ def create_note(request):
             note = form.save(commit=False)
             note.author = request.user
             note.save()
-            return redirect('index')
+            return redirect(reverse('notes:notes_list'))
     else:
         form = NoteForm()
     context = {'form': form, 'title':'Создание заметки'}
@@ -39,7 +44,7 @@ def update_note(request, note_id):
             note = form.save(commit=False)
             note.author = request.user
             note.save()
-            return redirect('index')
+            return redirect(reverse('notes:notes_list'))
     else:
         form = NoteForm(instance=note)
     context = {'form':form, 'title':'Редактирование заметки'}
@@ -50,6 +55,6 @@ def delete_note(request, note_id):
     note = get_object_or_404(Note, id=note_id, author=request.user)
     if request.method == 'POST':
         note.delete()
-        return redirect('index')
+        return redirect('notes:notes_list')
     context = {'note':note, 'title':'Удаление заметки'}
     return render(request, 'notes/delete_note.html', context)

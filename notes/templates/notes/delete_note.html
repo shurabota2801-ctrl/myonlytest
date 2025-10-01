@@ -3,13 +3,14 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div>
-    <h1>Удаление заметки</h1>
-    <p>Вы точно хотите удалить заметку: {{ note.title }}</p>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Удалить</button>
-    </form>
-</div>
+    <div>
+        <h1>Удаление заметки</h1>
+        <p>Вы точно хотите удалить заметку: {{ note.title }}</p>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Удалить</button>
+            <a href="{% url 'notes:notes_list' %}">Отмена</a>
+        </form>
+    </div>
 {% endblock %}

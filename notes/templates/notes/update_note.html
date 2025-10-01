@@ -3,11 +3,12 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
-<div>
-    <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Изменить</button>
-    </form>
-</div>
+    <div>
+        <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Изменить</button>
+        <a href="{% url 'notes:notes_list' %}">Отмена</a>
+        </form>
+    </div>
 {% endblock %}

@@ -3,12 +3,13 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div>
-    <h1>Создание заметки</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Создать</button>
-    </form>
-</div>
+    <div>
+        <h1>Создание заметки</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Создать</button>
+            <a href="{% url 'notes:notes_list' %}">Отмена</a>
+        </form>
+    </div>
 {% endblock %}

@@ -101,6 +101,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATIC_URL = '/static/'
+
+# Для разработки
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # глобальные статические файлы
+]
+
 # Куда перенаправлять после входа
 LOGIN_REDIRECT_URL = 'index'
 
