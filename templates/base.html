@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta = charset="UTF-8">
+    <meta charset="UTF-8">
     <title>{% block title %}myonlytest{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div>
-        <nav>
+        <nav class="header">
             <a href="/">Главная</a>
             {% if user.is_authenticated %}
             <a href="{% url 'notes:notes_list' %}">Мои заметки</a>
