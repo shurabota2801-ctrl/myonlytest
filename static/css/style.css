@@ -1,4 +1,4 @@
-body {
+.page {
     margin: 0;
     padding: 0;
 }
@@ -6,16 +6,40 @@ body {
 .header {
     background-color: #333;
     padding: 1rem 2rem;
+    border-bottom: 1px solid black;
+}
+
+.nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header a {
+.nav__left, .nav__right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav__link {
     color:  white;
     text-decoration: none;
-    margin-left: 1.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem; 
+}
+
+.nav__link:hover {
+    color: burlywood;
+}
+
+.nav__button {
+    background: grey;
+    color: white;
+    border: none;
+    padding: o.5rem, 1rem;
     border-radius: 4px;
-    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.nav__button:hover {
+    background: burlywood;
 }
