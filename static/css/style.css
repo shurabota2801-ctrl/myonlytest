@@ -24,22 +24,8 @@
 .nav__link {
     color:  white;
     text-decoration: none;
-    padding: 0.5rem 1rem; 
-}
-
-.nav__link:hover {
-    color: burlywood;
-}
-
-.nav__button {
-    background: grey;
-    color: white;
-    border: none;
-    padding: o.5rem, 1rem;
+    margin-left: 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
-    cursor: pointer;
-}
-
-.nav__button:hover {
-    background: burlywood;
+    transition: color 0.3s;
 }
