@@ -5,25 +5,26 @@
 {% block content %}
     {% if user.is_authenticated %}
         <div>
-            <header>
-                <a href="{% url 'notes:note_create' %}">Создать заметку</a>
+            <div class="header-notes">
+                <a href="{% url 'notes:note_create' %}" class="button-block__button">Создать заметку</a>
                 <form method="get">
-                    <div>
-                        <input type="text" name="q" placeholder="Поиск по заметкам" value="{{ search_query }}">
-                        <button type="submit">Найти</button>
+                    <div class="search-block">
+                        <input type="text" class="input-search" name="q" placeholder="Поиск по заметкам" value="{{ search_query }}">
+                        <button type="submit" class="nav__button">Найти</button>
                     </div>
                 </form>
-            </header>
-            <div>
-                <h1>А это, когда пользователь зареган!</h1>
-                <h1>Заметки</h1>
+            </div>
+            <h1>Заметки</h1>
+            <div class="notes-list">
                 {% if notes %}
                     {% for n in notes %}
-                        <div>
+                        <div class="note-card">
                             <h3>{{ n.title }}</h3>
-                            <p>{{ n.content }}</p>
-                            <a href="{% url 'notes:note_update' n.id %}">Изменить</a>
-                            <a href="{% url 'notes:note_delete' n.id %}">Удалить</a>
+                            <p>{{ n.content|striptags|truncatewords:30 }}</p>
+                            <div class="button-block">
+                                <a href="{% url 'notes:note_update' n.id %}" class="button-block__button">Изменить</a>
+                                <a href="{% url 'notes:note_delete' n.id %}" class="button-block__button">Удалить</a>
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}

@@ -3,10 +3,16 @@
     padding: 0;
 }
 
+.main {
+    max-width: 1200px; 
+    margin: 0 auto;   
+    padding: 2rem; 
+}
+
 .header {
     background-color: #333;
     padding: 1rem 2rem;
-    border-bottom: 1px solid black;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
 }
 
 .nav {
@@ -32,13 +38,68 @@
 
 .nav__button {
     background: grey;
+    padding: 0.3rem 1rem;
     color: white;
     border: none;
-    padding: o.5rem, 1rem;
     border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
 }
 
 .nav__button:hover {
     background: burlywood;
+}
+
+.button-block {
+    display: flex;
+    gap: 1rem;
+}
+
+.button-block__button {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-block__button:hover {
+    background: burlywood;
+}
+
+.header-notes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.note-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-block {
+    display: flex;
+    gap: 1rem;
+}
+
+.input-search {
+    background: white;
+    border: 1px solid #e0e0e0;
+    padding: o.5rem, 1rem;
+    border-radius: 4px;
+    font-size: 16px;
 }

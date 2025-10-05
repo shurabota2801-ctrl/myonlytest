@@ -5,12 +5,14 @@
 {% block content %}
     <div>
         <h1>Удаление заметки</h1>
-        <p>Вы точно хотите удалить заметку: {{ note.title }}</p>
+        <p>Вы точно хотите удалить заметку: {{ note.title }}?</p>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Удалить</button>
-            <a href="{% url 'notes:notes_list' %}">Отмена</a>
+            <div class="button-block">
+                <button type="submit" class="button-block__button">Удалить</button>
+                <a href="{% url 'notes:notes_list' %}" class="button-block__button">Отмена</a>
+            </div>
         </form>
     </div>
 {% endblock %}
