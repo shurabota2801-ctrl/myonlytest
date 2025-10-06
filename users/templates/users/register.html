@@ -3,15 +3,15 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-<div>
-    <h1>Регистрация</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="sumbit">Зарегистрироваться</button>
-    </form>
     <div>
-        <a href="{% url 'users:login' %}">Есть аккаунт?</a>
+        <h1>Регистрация</h1>
+        <form method="POST" class="form">
+            <div class="form-block">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="button-block__button">Зарегистрироваться</button>
+            <a href="{% url 'users:login' %}" style="padding-top: 1rem; text-decoration: none;">Есть аккаунт?</a>
+        </form>
     </div>
-</div>
 {% endblock %}

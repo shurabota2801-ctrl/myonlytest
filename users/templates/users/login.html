@@ -3,15 +3,15 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div>
-    <h1>Авторизация</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Войти</button>
-    </form>
     <div>
-        <a href="{% url 'users:register' %}">Нет аккаунта?</a>
+        <h1>Авторизация</h1>
+        <form method="POST" class="form">
+            <div class="form-block">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="button-block__button">Войти</button>
+            <a href="{% url 'users:register' %}" style="padding-top: 1rem; text-decoration: none;">Нет аккаунта?</a>
+        </form>
     </div>
-</div>
 {% endblock %}

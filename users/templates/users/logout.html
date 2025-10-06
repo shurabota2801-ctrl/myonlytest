@@ -3,7 +3,12 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h1>Вы вышли из аккаунта</h1>
-<a href="{% url 'users:login' %}">Войти снова</a>
-<a href="/">На главную</a>
+    <h1>Выход</h1>
+    <div class="form">
+        <h1>Вы вышли из аккаунта</h1>
+        <div class="button-block">
+            <a href="{% url 'users:login' %}" class="button-block__button">Войти снова</a>
+            <a href="/" class="button-block__button">На главную</a>
+        </div>
+    </div>
 {% endblock %}

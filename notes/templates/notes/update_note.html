@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div class="form-notes">
-        <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="button-block">
-            <button type="submit" class="button-block__button ">Изменить</button>
-            <a href="{% url 'notes:notes_list' %}" class="button-block__button">Отмена</a>
-        </div>
+    <div>
+        <h1>Изменение заметки</h1>
+        <form method="POST" class="form">
+            <div class="form-block">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="button-block">
+                <button type="submit" class="button-block__button">Изменить</button>
+                <a href="{% url 'notes:notes_list' %}" class="button-block__button">Отмена</a>
+            </div>
         </form>
     </div>
 {% endblock %}

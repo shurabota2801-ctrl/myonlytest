@@ -5,9 +5,11 @@
 {% block content %}
     <div>
         <h1>Создание заметки</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
+        <form method="POST" class="form">
+            <div class="form-block">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
             <div class="button-block">
                 <button type="submit" class="button-block__button">Создать</button>
                 <a href="{% url 'notes:notes_list' %}" class="button-block__button">Отмена</a>

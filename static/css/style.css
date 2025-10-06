@@ -103,3 +103,38 @@
     border-radius: 4px;
     font-size: 16px;
 }
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    max-width: 1200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    min-height: 50vh; /* Занимает 80% высоты экрана */
+}
+
+.form-block {
+
+    padding: 1rem 0;
+}
+
+.form-block label {
+    display: block;
+    margin-bottom: 0.5rem;
+    
+
+}
+
+.form-block input[type="text"],
+.form-block input[type="password"], 
+.form-block textarea {
+    display: block;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+

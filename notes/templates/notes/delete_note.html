@@ -5,8 +5,8 @@
 {% block content %}
     <div>
         <h1>Удаление заметки</h1>
-        <p>Вы точно хотите удалить заметку: {{ note.title }}?</p>
-        <form method="POST">
+        <form method="POST" class="form">
+            <p>Вы точно хотите удалить заметку: {{ note.title }}?</p>
             {% csrf_token %}
             {{ form.as_p }}
             <div class="button-block">
