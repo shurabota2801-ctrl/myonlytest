@@ -17,7 +17,7 @@
             <h1>Заметки</h1>
             <div class="notes-list">
                 {% if notes %}
-                    {% for n in notes %}
+                    {% for n in page_notes %}
                         <div class="note-card">
                             <h3>{{ n.title }}</h3>
                             <p>{{ n.content|striptags|truncatewords:30 }}</p>
@@ -30,6 +30,30 @@
                 {% else %}
                     <p>Заметки не найдены!</p>
                 {% endif %}
+                
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_notes.has_previous %}
+                            <a href="?{% if search_query %}q={{ search_query }}&{% endif %}page=1">&laquo; первая</a>
+                            <a href="?{% if search_query %}q={{ search_query }}&{% endif %}page={{ page_notes.previous_page_number }}">предыдущая</a>
+                        {% else %}
+                            <span class="disabled">&laquo; первая</span>
+                            <span class="disabled">предыдущая</span>
+                        {% endif %}
+                        
+                        <span class="current">
+                            Страница {{ page_notes.number }} из {{ page_notes.paginator.num_pages }}
+                        </span>
+                        
+                        {% if page_notes.has_next %}
+                            <a href="?{% if search_query %}q={{ search_query }}&{% endif %}page={{ page_notes.next_page_number }}">следующая</a>
+                            <a href="?{% if search_query %}q={{ search_query }}&{% endif %}page={{ page_notes.paginator.num_pages }}">последняя &raquo;</a>
+                        {% else %}
+                            <span class="disabled">следующая</span>
+                            <span class="disabled">последняя &raquo;</span>
+                        {% endif %}
+                    </span>
+                </div>
             </div>
         </div>
     {% else %}

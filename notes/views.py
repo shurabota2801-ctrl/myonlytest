@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Note
 from .forms import NoteForm
@@ -14,10 +15,16 @@ def notes_list(request):
     search_query = request.GET.get('q', '')
     if search_query:
         notes = notes.filter(author=request.user).filter(Q(title__icontains=search_query) | Q(content__icontains=search_query)).order_by('-created_at')
+
+    paginator = Paginator(notes, 4)
+    page_number = request.GET.get('page')
+    page_notes = paginator.get_page(page_number)
+
     context = {
         'title':'Мои заметки',
         'notes':notes,
-        'search_query':search_query
+        'search_query':search_query,
+        'page_notes': page_notes,
     }
     return render(request, 'notes/notes_list.html', context)
 
