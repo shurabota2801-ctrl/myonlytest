@@ -22,7 +22,6 @@ def notes_list(request):
 
     context = {
         'title':'Мои заметки',
-        'notes':notes,
         'search_query':search_query,
         'page_notes': page_notes,
     }

@@ -16,7 +16,7 @@
             </div>
             <h1>Заметки</h1>
             <div class="notes-list">
-                {% if notes %}
+                {% if page_notes %}
                     {% for n in page_notes %}
                         <div class="note-card">
                             <h3>{{ n.title }}</h3>
