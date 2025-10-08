@@ -21,6 +21,8 @@
                         <div class="note-card">
                             <h3>{{ n.title }}</h3>
                             <p>{{ n.content|striptags|truncatewords:30 }}</p>
+                            <i>Создано: {{ n.created_at }}</i> |
+                            <i>Изменено: {{ n.updated_at }}</i>
                             <div class="button-block">
                                 <a href="{% url 'notes:note_update' n.id %}" class="button-block__button">Изменить</a>
                                 <a href="{% url 'notes:note_delete' n.id %}" class="button-block__button">Удалить</a>
