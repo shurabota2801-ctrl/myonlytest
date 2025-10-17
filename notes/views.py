@@ -14,7 +14,7 @@ def notes_list(request):
     notes = Note.objects.filter(author=request.user).order_by('-created_at')
     search_query = request.GET.get('q', '')
     if search_query:
-        notes = notes.filter(author=request.user).filter(Q(title__icontains=search_query) | Q(content__icontains=search_query)).order_by('-created_at')
+        notes = notes.filter(author=request.user).filter(Q(title__icontains=search_query) | Q(content__icontains=search_query)).order_by('-created_at') #__iregex для sqlite
 
     paginator = Paginator(notes, 4)
     page_number = request.GET.get('page')
